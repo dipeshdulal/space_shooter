@@ -4,11 +4,12 @@
  * @author     Dipesh Dulal
  * @version    1.0
  * @since      2016-10-15
- * @modified   2016-10-15
+ * @modified   2016-10-16
  **************************************************/
 
 #include "Application.h"
 #include <cstdio>
+#include <iostream>
 
 #ifdef _WIN32
   #include <SDL.h>
@@ -19,6 +20,7 @@
 #endif
 
 #include "SDL_util.h"
+#include "Eventlistner.h"
 
 // constructor
 Application::Application(){
@@ -26,12 +28,23 @@ Application::Application(){
   windowElements.renderer = NULL;
 }
 
+void sdl(SDL_Event e){
+  printf("Hello World");
+  std::cout << e.type << std::endl;
+}
+
 int Application::start(){
+  Eventlistner evt;
+
   if(!initialize()){
     return -1;
   }
 
-  // while (!)
+  // the main game loop where all the rendering stuff takes place
+  while(evt.initialize()){
+    evt.subscribe("abc", &sdl);
+  }
+
   return 0;
 }
 

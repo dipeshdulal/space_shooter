@@ -10,7 +10,8 @@ LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 PROG = SpaceShooter
 _OBJ = main.o \
 			 SDL_util.o \
-			 Application.o
+			 Application.o \
+			 Eventlistner.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
