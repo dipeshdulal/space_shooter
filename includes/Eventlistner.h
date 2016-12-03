@@ -22,19 +22,24 @@
 #include <vector>
 #include <iostream>
 
-struct Eventlistner_lists {
-  std::string key;
-  std::vector<void *(*)(SDL_Event)> functions;
-};
+using namespace std;
+
+typedef void(*functionPointer)(SDL_Event);
 
 class Eventlistner{
   private:
     void getEvent(SDL_Event*);
-    std::vector<struct Eventlistner_lists> lists;
+    vector<functionPointer> leftKey;
+    vector<functionPointer> rightKey;
+    vector<functionPointer> upKey;
+    vector<functionPointer> downKey;
+    vector<functionPointer> attackKey;
+    vector<functionPointer> escKey;
+    void emit(string );
   public:
     bool initialize();
     SDL_Event events;
-    void subscribe(std::string, void (*function)(SDL_Event));
+    void on(string , void (*function)(SDL_Event));
 };
 
 #endif

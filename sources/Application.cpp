@@ -29,8 +29,11 @@ Application::Application(){
 }
 
 void sdl(SDL_Event e){
-  printf("Hello World");
-  std::cout << e.type << std::endl;
+  printf("Left key pressed \n");
+}
+
+void leftAgain(SDL_Event e){
+  printf("another function for left key \n");
 }
 
 int Application::start(){
@@ -42,7 +45,11 @@ int Application::start(){
 
   // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
-    evt.subscribe("abc", &sdl);
+    // this is the main game loop
+
+    evt.on("LEFT_KEY", &sdl);
+    evt.on("LEFT_KEY", &leftAgain);
+
   }
 
   return 0;
