@@ -43,12 +43,12 @@ int Application::start(){
     return -1;
   }
 
+  evt.on("LEFT_KEY", &sdl);
+  evt.on("LEFT_KEY", &leftAgain);
+
   // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
-
-    evt.on("LEFT_KEY", &sdl);
-    evt.on("LEFT_KEY", &leftAgain);
 
   }
 
