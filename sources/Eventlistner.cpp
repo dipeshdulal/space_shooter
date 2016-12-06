@@ -43,6 +43,9 @@ bool Eventlistner::initialize(){
       case SDLK_LEFT:
         emit("LEFT_KEY");
         break;
+      case SDLK_SPACE:
+        emit("ATTACK_KEY");
+        break;
       case SDLK_RIGHT:
         emit("RIGHT_KEY");
         break;

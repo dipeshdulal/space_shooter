@@ -28,12 +28,20 @@ Application::Application(){
   windowElements.renderer = NULL;
 }
 
+void rightKey(SDL_Event e){
+  printf("Right key pressed \n");
+}
+
 void sdl(SDL_Event e){
   printf("Left key pressed \n");
 }
 
 void leftAgain(SDL_Event e){
   printf("another function for left key \n");
+}
+
+void attackFunction(SDL_Event e){
+  printf("Attack key pressed \n");
 }
 
 int Application::start(){
@@ -45,8 +53,9 @@ int Application::start(){
 
   evt.on("LEFT_KEY", &sdl);
   evt.on("LEFT_KEY", &leftAgain);
-
-  // the main game loop where all the rendering stuff takes place
+  evt.on("RIGHT_KEY", &rightKey);
+  evt.on("ATTACK_KEY", &attackFunction);
+ // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
 
