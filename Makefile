@@ -11,7 +11,8 @@ PROG = SpaceShooter
 _OBJ = main.o \
 			 SDL_util.o \
 			 Application.o \
-			 Eventlistner.o
+			 Eventlistner.o \
+			 FrameRate.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 

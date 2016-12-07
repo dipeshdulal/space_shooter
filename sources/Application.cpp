@@ -20,6 +20,7 @@
 
 #include "SDL_util.h"
 #include "Eventlistner.h"
+#include "FrameRate.h"
 
 // constructor
 Application::Application(){
@@ -43,21 +44,30 @@ void attackFunction(SDL_Event e){
   printf("Attack key pressed \n");
 }
 
+void upFunction(SDL_Event e){
+  printf("Up key pressed \n");
+}
+
+void downFunction(SDL_Event e){
+  printf("Down key pressed \n");
+}
+
 int Application::start(){
   Eventlistner evt;
-
+  FrameRate frameRate;
   if(!initialize()){
     return -1;
   }
 
   evt.on("LEFT_KEY", &sdl);
-  evt.on("LEFT_KEY", &leftAgain);
   evt.on("RIGHT_KEY", &rightKey);
   evt.on("ATTACK_KEY", &attackFunction);
-
- // the main game loop where all the rendering stuff takes place
+  evt.on("UP_KEY", &upFunction);
+  evt.on("DOWN_KEY", &downFunction);
+  // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
+    frameRate.start();
 
   }
 
