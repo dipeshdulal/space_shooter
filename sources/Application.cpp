@@ -68,7 +68,9 @@ int Application::start(){
   while(evt.initialize()){
     // this is the main game loop
     frameRate.start();
-
+    
+    // calling all the function calls 
+    evt.call();
   }
 
   return 0;

@@ -30,7 +30,13 @@ bool Eventlistner::initialize(){
   // A fallback for the application
   if(events.type == SDL_QUIT){
     return false;
-  }else if(events.type == SDL_KEYDOWN){
+  }
+  return true;
+}
+
+void Eventlistner::call(){
+   if(events.type == SDL_KEYDOWN){
+    
     // if down key is pressed
     switch(events.key.keysym.sym){
       case SDLK_UP:
@@ -53,7 +59,6 @@ bool Eventlistner::initialize(){
         break;
     }
   }
-  return true;
 }
 
 void Eventlistner::on(string a, functionPointer func){

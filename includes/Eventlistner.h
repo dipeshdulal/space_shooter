@@ -39,6 +39,7 @@ class Eventlistner{
   public:
     bool initialize();
     SDL_Event events;
+    void call();
     void on(string , void (*function)(SDL_Event));
 };
 
