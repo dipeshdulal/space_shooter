@@ -4,7 +4,6 @@
  * @author      Dipesh Dulal
  * @version     1.0
  * @since       2016-10-15
- * @modified    2016-10-15
  ************************************************************/
  // if we are on a windows system
  #ifdef _WIN32

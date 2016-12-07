@@ -4,7 +4,6 @@
  * @author    Dipesh Dulal
  * @version   1.0
  * @since     2016-10-16
- * @modified  2016-10-16
  *****************************************************/
 
 #include "Eventlistner.h"
@@ -72,6 +71,8 @@ void Eventlistner::on(string a, functionPointer func){
       downKey.push_back(func);
     }else if(a == "ESC_KEY"){
       escKey.push_back(func);
+    }else if(a == "ATTACK_KEY"){
+      attackKey.push_back(func);
     }
 }
 
@@ -97,6 +98,10 @@ void Eventlistner::emit(string a){
   }else if(a == "ESC_KEY"){
     for(unsigned int i = 0; i < escKey.size(); i++){
       (*escKey[i])(events);
+    }
+  }else if(a == "ATTACK_KEY"){
+    for(unsigned int i = 0; i < attackKey.size(); i++){
+      (*attackKey[i])(events);
     }
   }
 

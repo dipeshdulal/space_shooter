@@ -4,7 +4,6 @@
  * @author     Dipesh Dulal
  * @version    1.0
  * @since      2016-10-15
- * @modified   2016-10-16
  **************************************************/
 
 #include "Application.h"
@@ -55,6 +54,7 @@ int Application::start(){
   evt.on("LEFT_KEY", &leftAgain);
   evt.on("RIGHT_KEY", &rightKey);
   evt.on("ATTACK_KEY", &attackFunction);
+
  // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
