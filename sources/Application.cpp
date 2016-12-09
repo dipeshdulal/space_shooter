@@ -22,6 +22,9 @@
 #include "Eventlistner.h"
 #include "FrameRate.h"
 #include "TextureLoader.h"
+#include "tinyxml2.h"
+
+using namespace tinyxml2;
 
 // constructor
 Application::Application(){
@@ -63,6 +66,7 @@ int Application::start(){
   if(!initialize()){
     return -1;
   }
+
 
   Eventlistner evt;
   FrameRate frameRate;

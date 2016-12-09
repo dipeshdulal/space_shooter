@@ -38,7 +38,7 @@ TextureLoader::~TextureLoader(){
 	// freeing the memory
 
 	// clearing the screen
-	SDL_RenderClear(_renderer);
+	// SDL_RenderClear(_renderer);
 	
 	SDL_DestroyTexture(_texture);
 	_texture = NULL;
