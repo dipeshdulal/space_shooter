@@ -1,7 +1,7 @@
 /**************************************************
  * Implementation of the main class
  *
- * @author     Dipesh Dulal,
+ * @author     Dipesh Dulal, Abhimanyu 
  * @version    1.0
  * @since      2016-10-15
  **************************************************/
@@ -21,6 +21,7 @@
 #include "SDL_util.h"
 #include "Eventlistner.h"
 #include "FrameRate.h"
+#include "TextureLoader.h"
 
 // constructor
 Application::Application(){
@@ -34,6 +35,11 @@ void rightKey(SDL_Event e){
 
 void sdl(SDL_Event e){
   printf("Left key pressed \n");
+  // TextureLoader loader(windowElements.renderer);
+  // loader.load("resources/simon.jpg");
+  // loader.renderTexture(&a, &rect, windowElements.window);
+  // SDL_Rect rect = {0,0,32,32};
+  // SDL_Rect a = {640/2,480/2,32,32};
 }
 
 void leftAgain(SDL_Event e){
@@ -53,24 +59,41 @@ void downFunction(SDL_Event e){
 }
 
 int Application::start(){
-  Eventlistner evt;
-  FrameRate frameRate;
+
   if(!initialize()){
     return -1;
   }
 
+  Eventlistner evt;
+  FrameRate frameRate;
+  TextureLoader loader(windowElements.renderer);
+
+  loader.load("resources/simon.jpg");
+  loader.renderTexture(NULL, NULL);
+  loader.load("resources/tech_logo.png");
+
+  SDL_Rect rect = {0,0,1945,1945};
+  SDL_Rect a = {640/2,480/2,100,100};
+
   evt.on("LEFT_KEY", &sdl);
-  evt.on("RIGHT_KEY", &rightKey);
-  evt.on("ATTACK_KEY", &attackFunction);
-  evt.on("UP_KEY", &upFunction);
-  evt.on("DOWN_KEY", &downFunction);
+  // evt.on("RIGHT_KEY", &rightKey);
+  // evt.on("ATTACK_KEY", &attackFunction);
+  // evt.on("UP_KEY", &upFunction);
+  // evt.on("DOWN_KEY", &downFunction);
+
+
   // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
     frameRate.start();
-    
+
+      
+    loader.renderTexture(&rect,&a);
+    loader.presentTexture();
+
     // calling all the function calls 
     evt.call();
+
   }
 
   return 0;

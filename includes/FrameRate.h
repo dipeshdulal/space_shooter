@@ -11,7 +11,7 @@
 	// include the sdl
 	#ifdef _WIN32
 	  #include <SDL.h>
-	#endif
+	#endif                        
 
 	#ifdef __linux
 	  #include <SDL2/SDL.h>
@@ -21,7 +21,7 @@
 	class FrameRate{
 
 		private:
-			const int _frameRate = 30;
+			const int _frameRate = 60;
 			int _previousTicks = 0;
 			const int _ticksPerFrame = (100/_frameRate);
 

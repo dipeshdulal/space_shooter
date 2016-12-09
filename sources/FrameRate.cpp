@@ -22,7 +22,7 @@ void FrameRate::start(){
 
 	if( frameTicks < _ticksPerFrame ){
 		// delay the program
-		SDL_Delay( _ticksPerFrame - frameTicks );
+		// SDL_Delay( (_ticksPerFrame - frameTicks) );
 	}
 
 	_previousTicks = currentTicks;
@@ -31,5 +31,5 @@ void FrameRate::start(){
 	
 // constructor
 FrameRate::FrameRate(){
-	cout << "Running at " << _frameRate << " fps";
+	cout << "Running at " << _frameRate << " fps" << endl;
 }

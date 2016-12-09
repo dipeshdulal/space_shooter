@@ -12,7 +12,8 @@ _OBJ = main.o \
 			 SDL_util.o \
 			 Application.o \
 			 Eventlistner.o \
-			 FrameRate.o
+			 FrameRate.o \
+			 TextureLoader.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
