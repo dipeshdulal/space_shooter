@@ -1,7 +1,7 @@
 /**************************************************
  * Implementation of the main class
  *
- * @author     Dipesh Dulal, Abhimanyu 
+ * @author     Dipesh Dulal, Abhimanyu Pandey
  * @version    1.0
  * @since      2016-10-15
  **************************************************/
