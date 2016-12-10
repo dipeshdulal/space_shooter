@@ -1,6 +1,6 @@
 #ifndef SPACESHOOTER_TEXTURELOADER
  #define SPACESHOOTER_TEXTURELOADER
-	
+ //changed from another computer
  // include the sdl
 #ifdef _WIN32
   #include <SDL.h>
