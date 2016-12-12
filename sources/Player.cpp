@@ -25,24 +25,43 @@ namespace PlayerPosition{
 void PlayerEvent::_moveLeft(SDL_Event e){
 	PlayerPosition::posX -= PlayerPosition::speed;
 	PlayerPosition::_dstImage.x = PlayerPosition::posX;
+	if(PlayerPosition::posX<0) 
+	{
+		PlayerPosition::posX=0;
+	}
+	     
+
 }
 
 // right key logic 
 void PlayerEvent::_moveRight(SDL_Event e){
 	PlayerPosition::posX += PlayerPosition::speed;
 	PlayerPosition::_dstImage.x = PlayerPosition::posX;
+	if(PlayerPosition::posX>590)
+	{
+		PlayerPosition::posX=590;
+	}
 }
 
 // up key logic 
 void PlayerEvent::_moveUp(SDL_Event e){
 	PlayerPosition::posY -= PlayerPosition::speed;
 	PlayerPosition::_dstImage.y = PlayerPosition::posY;
+	if(PlayerPosition::posY<0)
+	{
+		PlayerPosition::posY=0;
+	}
 }
 
 // down key logic 
 void PlayerEvent::_moveDown(SDL_Event e){
 	PlayerPosition::posY += PlayerPosition::speed;
 	PlayerPosition::_dstImage.y = PlayerPosition::posY;
+	if(PlayerPosition::posY>440)
+	{
+		PlayerPosition::posY=440;
+
+	}
 }
 
 void Player::init(){
