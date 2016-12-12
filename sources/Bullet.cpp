@@ -29,7 +29,7 @@ void Bullet::renderBullet(){
 			break;
 		}
 		_posY -= speed;
-		cout << _posY << endl;e
+		cout << _posY << endl;
 		SDL_Rect bulletPos = {_posX, _posY, 9/2,54/2};
 		_textureLoader->renderTexture(&_bulletPos, &bulletPos);
 		_textureLoader->presentRenderer();

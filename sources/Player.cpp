@@ -32,8 +32,6 @@ void PlayerEvent::_moveLeft(SDL_Event e){
 	{
 		PlayerPosition::posX=0;
 	}
-	     
-
 }
 
 // right key logic 
