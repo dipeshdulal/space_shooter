@@ -10,6 +10,7 @@
 
 #include "Player.h"
 #include <iostream>
+#include "Bullet.h"
 
 using namespace std;
 using namespace PlayerEvent;
@@ -20,6 +21,8 @@ namespace PlayerPosition{
 	SDL_Rect _srcImage;
 	SDL_Rect _dstImage;
 }
+
+SDL_Renderer *gRenderer = NULL;
 
 // left key logic 
 void PlayerEvent::_moveLeft(SDL_Event e){
@@ -45,6 +48,12 @@ void PlayerEvent::_moveDown(SDL_Event e){
 	PlayerPosition::_dstImage.y = PlayerPosition::posY;
 }
 
+// bullet logic or attack logic
+void PlayerEvent::_attack(SDL_Event e){
+	Bullet b1(PlayerPosition::posX + 99/4 , PlayerPosition::posY, gRenderer);
+	b1.renderBullet();
+}
+
 void Player::init(){
 	PlayerPosition::posX = 640/2;
 	PlayerPosition::posY = 480/2;
@@ -61,6 +70,7 @@ void Player::init(){
 
 Player::Player(Eventlistner& listner, SDL_Renderer *renderer){
 	init();	
+	gRenderer = renderer;
 	_textureLoader = new TextureLoader(renderer);
 	_textureLoader->load("resources/sheet.png");
 	attachEventListners(listner);
@@ -75,7 +85,7 @@ void Player::render(){
 void Player::attachEventListners(Eventlistner &listner){
 	listner.on("LEFT_KEY", &_moveLeft);
 	listner.on("RIGHT_KEY", &_moveRight);
-	// listner.on("ATTACK_KEY", &_attack);
+	listner.on("ATTACK_KEY", &_attack);
 	listner.on("UP_KEY", &_moveUp);
 	listner.on("DOWN_KEY", &_moveDown);
 }
