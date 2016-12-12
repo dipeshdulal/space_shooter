@@ -21,7 +21,7 @@
 	class FrameRate{
 
 		private:
-			const int _frameRate = 60;
+			const int _frameRate = 30;
 			int _previousTicks = 0;
 			const int _ticksPerFrame = (100/_frameRate);
 

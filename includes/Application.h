@@ -5,7 +5,6 @@
  * @author    Dipesh Dulal
  * @version   1.0
  * @since     2016-10-15
- * @modified  2016-10-15
  *****************************************************/
 #ifndef SPACESHOOTER_APPLICATION
     #define SPACESHOOTER_APPLICATION

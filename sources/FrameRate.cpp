@@ -22,11 +22,10 @@ void FrameRate::start(){
 
 	if( frameTicks < _ticksPerFrame ){
 		// delay the program
-		// SDL_Delay( (_ticksPerFrame - frameTicks) );
+		SDL_Delay( _ticksPerFrame - frameTicks );
 	}
 
 	_previousTicks = currentTicks;
-
 }	
 	
 // constructor

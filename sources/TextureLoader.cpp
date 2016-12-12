@@ -61,7 +61,7 @@ void TextureLoader::renderTexture(SDL_Rect* srcRect,SDL_Rect* dstRect, SDL_Textu
 	
 }
 
-void TextureLoader::presentTexture(){
+void TextureLoader::presentRenderer(){
 	// updating the screen
 	SDL_RenderPresent( _renderer );
 }

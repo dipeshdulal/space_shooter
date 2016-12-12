@@ -4,7 +4,6 @@
  * @author    Dipesh Dulal
  * @version   1.0
  * @since     2016-10-16
- * @modified  2016-10-16
  *****************************************************/
 
 #ifndef SPACESHOOTER_EVENTLISTNER
@@ -35,7 +34,7 @@ class Eventlistner{
     vector<functionPointer> downKey;
     vector<functionPointer> attackKey;
     vector<functionPointer> escKey;
-    void emit(string );
+    void emit( string );
   public:
     bool initialize();
     SDL_Event events;

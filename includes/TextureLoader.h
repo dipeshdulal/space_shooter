@@ -1,5 +1,15 @@
+/*****************************************************
+ * Texture loader class. Used to display the images
+ * and load images to screen.
+ *
+ * @author    Dipesh Dulal
+ * @version   1.0
+ * @since     2016-12-11
+ *****************************************************/
+
 #ifndef SPACESHOOTER_TEXTURELOADER
  #define SPACESHOOTER_TEXTURELOADER
+
  //changed from another computer
  // include the sdl
 #ifdef _WIN32
@@ -30,7 +40,7 @@ class TextureLoader{
 		SDL_Texture* load(string path); 
 		~TextureLoader();
 		void renderTexture(SDL_Rect*, SDL_Rect*, SDL_Texture* = NULL);
-		void presentTexture();
+		void presentRenderer();
 		void getTextureWidthHeight(int &, int &, SDL_Texture* = NULL);
 
 		// to get previously loaded texture 

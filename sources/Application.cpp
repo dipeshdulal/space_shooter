@@ -22,9 +22,7 @@
 #include "Eventlistner.h"
 #include "FrameRate.h"
 #include "TextureLoader.h"
-#include "tinyxml2.h"
-
-using namespace tinyxml2;
+#include "Player.h"
 
 // constructor
 Application::Application(){
@@ -36,30 +34,6 @@ void rightKey(SDL_Event e){
   printf("Right key pressed \n");
 }
 
-void sdl(SDL_Event e){
-  printf("Left key pressed \n");
-  // TextureLoader loader(windowElements.renderer);
-  // loader.load("resources/simon.jpg");
-  // loader.renderTexture(&a, &rect, windowElements.window);
-  // SDL_Rect rect = {0,0,32,32};
-  // SDL_Rect a = {640/2,480/2,32,32};
-}
-
-void leftAgain(SDL_Event e){
-  printf("another function for left key \n");
-}
-
-void attackFunction(SDL_Event e){
-  printf("Attack key pressed \n");
-}
-
-void upFunction(SDL_Event e){
-  printf("Up key pressed \n");
-}
-
-void downFunction(SDL_Event e){
-  printf("Down key pressed \n");
-}
 
 int Application::start(){
 
@@ -71,33 +45,21 @@ int Application::start(){
   Eventlistner evt;
   FrameRate frameRate;
   TextureLoader loader(windowElements.renderer);
+  Player player(evt, windowElements.renderer);
 
-  loader.load("resources/simon.jpg");
-  loader.renderTexture(NULL, NULL);
-  loader.load("resources/tech_logo.png");
+  loader.load("resources/darkPurple.png");
 
-  SDL_Rect rect = {0,0,1945,1945};
-  SDL_Rect a = {640/2,480/2,100,100};
-
-  evt.on("LEFT_KEY", &sdl);
-  // evt.on("RIGHT_KEY", &rightKey);
-  // evt.on("ATTACK_KEY", &attackFunction);
-  // evt.on("UP_KEY", &upFunction);
-  // evt.on("DOWN_KEY", &downFunction);
-
+  // SDL_Rect src = {211,941,99,75};
+  // SDL_Rect dst = {100,100,99/2,75/2};
 
   // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
     frameRate.start();
-
-      
-    loader.renderTexture(&rect,&a);
-    loader.presentTexture();
-
-    // calling all the function calls 
     evt.call();
-
+    loader.renderTexture(NULL, NULL);
+    player.render();
+    loader.presentRenderer();
   }
 
   return 0;
