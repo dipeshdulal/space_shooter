@@ -9,6 +9,7 @@
 #include "Application.h"
 #include <cstdio>
 #include <iostream>
+#include <vector>
 
 #ifdef _WIN32
   #include <SDL.h>
@@ -23,6 +24,7 @@
 #include "FrameRate.h"
 #include "TextureLoader.h"
 #include "Player.h"
+#include "Bullet.h"
 
 // constructor
 Application::Application(){
@@ -30,10 +32,11 @@ Application::Application(){
   windowElements.renderer = NULL;
 }
 
-void rightKey(SDL_Event e){
-  printf("Right key pressed \n");
+void renderPlayerBullets(){
+  for(unsigned int i = 0; i < playerBullets.size();i++){
+    playerBullets[i].renderBullet();
+  }  
 }
-
 
 int Application::start(){
 
@@ -56,9 +59,9 @@ int Application::start(){
   while(evt.initialize()){
     // this is the main game loop
     frameRate.start();
-    evt.call();
     loader.renderTexture(NULL, NULL);
     player.render();
+    renderPlayerBullets();
     loader.presentRenderer();
   }
 

@@ -18,6 +18,7 @@
 	  #include <SDL2/SDL.h>
 	#endif
 	
+	#include <vector>
 	#include <iostream>
 	#include "TextureLoader.h"
 
@@ -26,12 +27,14 @@
 	class Bullet{
 		private:
 			SDL_Rect _bulletPos = {856,421,9/2, 54/2};
-			int _posX, _posY, speed = 0.1;
+			int _posX, _posY, speed = 3;
 			TextureLoader *_textureLoader = NULL;
 			void init();
 		public:
 			Bullet(int, int, SDL_Renderer*);
 			void renderBullet();		
 	};
+
+	extern vector<Bullet> playerBullets;
 
 #endif

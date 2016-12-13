@@ -68,7 +68,7 @@ void PlayerEvent::_moveDown(SDL_Event e){
 // bullet logic or attack logic
 void PlayerEvent::_attack(SDL_Event e){
 	Bullet b1(PlayerPosition::posX + 99/4 , PlayerPosition::posY, gRenderer);
-	b1.renderBullet();
+	playerBullets.push_back(b1);
 }
 
 void Player::init(){
@@ -90,7 +90,7 @@ Player::Player(Eventlistner& listner, SDL_Renderer *renderer){
 	gRenderer = renderer;
 	_textureLoader = new TextureLoader(renderer);
 	_textureLoader->load("resources/sheet.png");
-	attachEventListners(listner);
+	attachEventListners(listner);  
 }
 
 // to render the player
@@ -100,7 +100,7 @@ void Player::render(){
 
 // to attachEventListners
 void Player::attachEventListners(Eventlistner &listner){
-	listner.on("LEFT_KEY", &_moveLeft);
+	listner.on("LEFT_KEY", &_moveLeft)  ;
 	listner.on("RIGHT_KEY", &_moveRight);
 	listner.on("ATTACK_KEY", &_attack);
 	listner.on("UP_KEY", &_moveUp);

@@ -23,8 +23,6 @@
 #include "TextureLoader.h"
 #include "WindowElements.h"
 
-
-
 class Player{
 	private:
 		TextureLoader *_textureLoader = NULL;

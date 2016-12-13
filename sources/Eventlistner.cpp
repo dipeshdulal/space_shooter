@@ -21,6 +21,32 @@
 
 void Eventlistner::getEvent(SDL_Event* evt){
   SDL_PollEvent(evt);
+  const Uint8* keys = SDL_GetKeyboardState( NULL );
+
+  if(keys[SDL_SCANCODE_UP]){
+    emit("UP_KEY");
+  }
+
+  if(keys[SDL_SCANCODE_DOWN]){
+    emit("DOWN_KEY");
+  }
+
+  if(keys[SDL_SCANCODE_LEFT]){
+    emit("LEFT_KEY");
+  }
+
+  if(keys[SDL_SCANCODE_RIGHT]){
+    emit("RIGHT_KEY");
+  }
+
+  if(keys[SDL_SCANCODE_SPACE]){
+    emit("ATTACK_KEY");
+  }
+
+  if(keys[SDL_SCANCODE_ESCAPE]){
+    emit("ESCAPE_KEY");
+  }
+
 }
 
 bool Eventlistner::initialize(){
@@ -34,31 +60,34 @@ bool Eventlistner::initialize(){
   return true;
 }
 
+
 void Eventlistner::call(){
-   if(events.type == SDL_KEYDOWN){
-    
-    // if down key is pressed
-    switch(events.key.keysym.sym){
-      case SDLK_UP:
-        emit("UP_KEY");
-        break;
-      case SDLK_DOWN:
-        emit("DOWN_KEY");
-        break;
-      case SDLK_LEFT:
-        emit("LEFT_KEY");
-        break;
-      case SDLK_SPACE:
-        emit("ATTACK_KEY");
-        break;
-      case SDLK_RIGHT:
-        emit("RIGHT_KEY");
-        break;
-      case SDLK_ESCAPE:
-        emit("ESCAPE_KEY");
-        break;
-    }
-  }
+
+
+  // if(keys[SDL_SCANCODE_UP]){
+  //   emit("UP_KEY");
+  // }
+
+  // if(keys[SDL_SCANCODE_DOWN]){
+  //   emit("DOWN_KEY");
+  // }
+
+  // if(keys[SDL_SCANCODE_LEFT]){
+  //   emit("LEFT_KEY");
+  // }
+
+  // if(keys[SDL_SCANCODE_RIGHT]){
+  //   emit("RIGHT_KEY");
+  // }
+
+  // if(keys[SDL_SCANCODE_SPACE]){
+  //   emit("ATTACK_KEY");
+  // }
+
+  // if(keys[SDL_SCANCODE_ESCAPE]){
+  //   emit("ESCAPE_KEY");
+  // }
+
 }
 
 void Eventlistner::on(string a, functionPointer func){
@@ -68,15 +97,20 @@ void Eventlistner::on(string a, functionPointer func){
   // on the vector lists
     if(a == "LEFT_KEY"){
       leftKey.push_back(func);
-    }else if(a == "RIGHT_KEY"){
+    }
+    if(a == "RIGHT_KEY"){
       rightKey.push_back(func);
-    }else if(a == "UP_KEY"){
+    }
+    if(a == "UP_KEY"){
       upKey.push_back(func);
-    }else if(a =="DOWN_KEY"){
+    }
+    if(a =="DOWN_KEY"){
       downKey.push_back(func);
-    }else if(a == "ESC_KEY"){
+    }
+    if(a == "ESC_KEY"){
       escKey.push_back(func);
-    }else if(a == "ATTACK_KEY"){
+    }
+    if(a == "ATTACK_KEY"){
       attackKey.push_back(func);
     }
 }
@@ -88,26 +122,30 @@ void Eventlistner::emit(string a){
     for(unsigned int i = 0; i < leftKey.size(); i++){
       (*leftKey[i])(events);
     }
-  }else if(a == "RIGHT_KEY"){
+  }
+  if(a == "RIGHT_KEY"){
     for(unsigned int i = 0; i < rightKey.size(); i++){
       (*rightKey[i])(events);
     }
-  }else if(a == "UP_KEY"){
+  }
+  if(a == "UP_KEY"){
     for(unsigned int i = 0; i < upKey.size(); i++){
       (*upKey[i])(events);
     }
-  }else if(a =="DOWN_KEY"){
+  }
+  if(a =="DOWN_KEY"){
     for(unsigned int i = 0; i < downKey.size(); i++){
       (*downKey[i])(events);
     }
-  }else if(a == "ESC_KEY"){
+  }
+  if(a == "ESC_KEY"){
     for(unsigned int i = 0; i < escKey.size(); i++){
       (*escKey[i])(events);
     }
-  }else if(a == "ATTACK_KEY"){
+  }
+  if(a == "ATTACK_KEY"){
     for(unsigned int i = 0; i < attackKey.size(); i++){
       (*attackKey[i])(events);
     }
   }
-
 }

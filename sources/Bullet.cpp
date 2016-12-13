@@ -22,17 +22,13 @@ void Bullet::init(){
 }
 
 void Bullet::renderBullet(){
-	FrameRate fr;
 	while(true){
-		fr.start();
+		_posY -= speed;
 		if(_posY < 0){
 			break;
 		}
-		_posY -= speed;
-		cout << _posY << endl;
 		SDL_Rect bulletPos = {_posX, _posY, 9/2,54/2};
 		_textureLoader->renderTexture(&_bulletPos, &bulletPos);
-		_textureLoader->presentRenderer();
 	}
 }
 
