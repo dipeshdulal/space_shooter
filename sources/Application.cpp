@@ -10,6 +10,9 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
+#include <future>
+
+using namespace std;
 
 #ifdef _WIN32
   #include <SDL.h>
@@ -43,7 +46,7 @@ int Application::start(){
   FrameRate frameRate;
   TextureLoader loader(windowElements.renderer);
   Player player(evt, windowElements.renderer);
-
+  // future<void> fut = async(renderPlayerBullets);
   loader.load("resources/darkPurple.png");
 
   // SDL_Rect src = {211,941,99,75};
@@ -55,7 +58,10 @@ int Application::start(){
     frameRate.start();
     loader.renderTexture(NULL, NULL);
     player.render();
-    renderPlayerBullets();
+    playerBullets.renderBullets();
+    // renderPlayerBullets();
+    // fut.get();
+
     loader.presentRenderer();
   }
 

@@ -69,7 +69,7 @@ void PlayerEvent::_moveDown(SDL_Event e){
 // bullet logic or attack logic
 void PlayerEvent::_attack(SDL_Event e){
 	Bullet b1(PlayerPosition::posX + 99/4 , PlayerPosition::posY, gRenderer);
-	playerBullets.push_back(b1);
+	playerBullets.addBullet(b1);
 }
 
 void Player::init(){

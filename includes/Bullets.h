@@ -5,9 +5,21 @@
 	#include <iostream>
 
 	using namespace std;
-	// contains bullets;
-	extern vector<Bullet> playerBullets;
-	extern vector<Bullet> enemyBullets;
-	extern void renderPlayerBullets();
+
+	// this should bind all the bullet 
+	// and should be responsible to 
+	// render all the bullets to the screen
+	class Bullets{
+		private:
+			vector<Bullet> bullet;
+			void removeBullet(unsigned int);
+			void renderIndividualBullet(unsigned int);
+		public:
+			void addBullet(Bullet);
+			void renderBullets();
+
+	};
+
+	extern Bullets playerBullets;
 
 #endif

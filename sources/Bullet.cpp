@@ -21,10 +21,9 @@ void Bullet::init(){
 	_textureLoader->load("resources/sheet.png");
 }
 
-void Bullet::renderBullet(){
-	_posY -= speed;
-	SDL_Rect bulletPos = {_posX, _posY, 9/2,54/2};
-	_textureLoader->renderTexture(&_bulletPos, &bulletPos);
+
+void Bullet::getSpeed(int &speed){
+	speed = this->speed;
 }
 
 void Bullet::getPosXY(int &x, int &y){
@@ -32,5 +31,15 @@ void Bullet::getPosXY(int &x, int &y){
 	y = _posY;
 }
 
+// to set the position x and y of the bullet
+void Bullet::setPosXY(int x, int y){
+	_posX = x;
+	_posY = y;
+}
+
+void Bullet::render(){
+	SDL_Rect bulletPos = {_posX, _posY, 9/2,54/2};
+    _textureLoader->renderTexture(&_bulletPos, &bulletPos);
+}
 
 

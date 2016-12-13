@@ -22,13 +22,13 @@
 #include "Eventlistner.h"
 #include "TextureLoader.h"
 #include "WindowElements.h"
+#include "Bullets.h"
 
 class Player{
 	private:
 		TextureLoader *_textureLoader = NULL;
 		void init();
 	public:
-		// constructor
 		Player(Eventlistner&, SDL_Renderer*);
 		void attachEventListners(Eventlistner &);
 		void render();

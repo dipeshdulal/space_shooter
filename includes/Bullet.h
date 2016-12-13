@@ -27,13 +27,15 @@
 	class Bullet{
 		private:
 			SDL_Rect _bulletPos = {856,421,9/2, 54/2};
-			int _posX, _posY, speed = 3;
+			int _posX, _posY, speed = 1;
 			TextureLoader *_textureLoader = NULL;
 			void init();
 		public:
+			void render();
+			void getSpeed(int&);
 			void getPosXY(int&,int&);
 			Bullet(int, int, SDL_Renderer*);
-			void renderBullet();		
+			void setPosXY(int, int);
 	};
 
 

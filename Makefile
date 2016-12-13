@@ -6,7 +6,7 @@ BDIR = bin
 DDIR = data
 CC = g++
 CFLAGS = -Wall -g
-LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
+LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
 PROG = SpaceShooter
 _OBJ = main.o \
 			 SDL_util.o \
