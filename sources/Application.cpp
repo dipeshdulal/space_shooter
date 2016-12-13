@@ -32,11 +32,11 @@ Application::Application(){
   windowElements.renderer = NULL;
 }
 
-void renderPlayerBullets(){
-  for(unsigned int i = 0; i < playerBullets.size();i++){
-    playerBullets[i].renderBullet();
-  }  
-}
+// void renderPlayerBullets(){
+//   for(unsigned int i = 0; i < playerBullets.size();i++){
+//     playerBullets[i].renderBullet();
+//   }  
+// }
 
 int Application::start(){
 
@@ -61,7 +61,7 @@ int Application::start(){
     frameRate.start();
     loader.renderTexture(NULL, NULL);
     player.render();
-    renderPlayerBullets();
+    // renderPlayerBullets();
     loader.presentRenderer();
   }
 
