@@ -15,7 +15,8 @@ _OBJ = main.o \
 			 FrameRate.o \
 			 TextureLoader.o \
 			 Player.o \
-			 Bullet.o
+			 Bullet.o \
+			 Bullets.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 

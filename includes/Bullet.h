@@ -31,10 +31,10 @@
 			TextureLoader *_textureLoader = NULL;
 			void init();
 		public:
+			void getPosXY(int&,int&);
 			Bullet(int, int, SDL_Renderer*);
 			void renderBullet();		
 	};
 
-	extern vector<Bullet> playerBullets;
 
 #endif

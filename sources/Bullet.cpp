@@ -22,14 +22,14 @@ void Bullet::init(){
 }
 
 void Bullet::renderBullet(){
-	while(true){
-		_posY -= speed;
-		if(_posY < 0){
-			break;
-		}
-		SDL_Rect bulletPos = {_posX, _posY, 9/2,54/2};
-		_textureLoader->renderTexture(&_bulletPos, &bulletPos);
-	}
+	_posY -= speed;
+	SDL_Rect bulletPos = {_posX, _posY, 9/2,54/2};
+	_textureLoader->renderTexture(&_bulletPos, &bulletPos);
+}
+
+void Bullet::getPosXY(int &x, int &y){
+	x = _posX;
+	y = _posY;
 }
 
 

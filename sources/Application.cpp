@@ -24,19 +24,13 @@
 #include "FrameRate.h"
 #include "TextureLoader.h"
 #include "Player.h"
-#include "Bullet.h"
+#include "Bullets.h"
 
 // constructor
 Application::Application(){
   windowElements.window = NULL;
   windowElements.renderer = NULL;
 }
-
-// void renderPlayerBullets(){
-//   for(unsigned int i = 0; i < playerBullets.size();i++){
-//     playerBullets[i].renderBullet();
-//   }  
-// }
 
 int Application::start(){
 
@@ -61,7 +55,7 @@ int Application::start(){
     frameRate.start();
     loader.renderTexture(NULL, NULL);
     player.render();
-    // renderPlayerBullets();
+    renderPlayerBullets();
     loader.presentRenderer();
   }
 
