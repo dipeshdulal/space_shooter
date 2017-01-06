@@ -5,8 +5,8 @@ ODIR = objects
 BDIR = bin
 DDIR = data
 CC = g++
-CFLAGS = -Wall -g
-LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
+CFLAGS = -Wall -g -std=c++11
+LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 PROG = SpaceShooter
 _OBJ = main.o \
 			 SDL_util.o \
