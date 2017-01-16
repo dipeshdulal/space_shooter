@@ -18,17 +18,32 @@ void FrameRate::start(){
 	// miliseconds passed to generate one frame
 	int frameTicks = currentTicks - _previousTicks;
 
-	// cout << _ticksPerFrame << endl;
-
+	// cout << frameTicks << endl;
+// 
 	if( frameTicks < _ticksPerFrame ){
-		// delay the program
-		SDL_Delay( _ticksPerFrame - frameTicks );
-	}
 
+		// delay the program0
+		SDL_Delay( _ticksPerFrame - frameTicks );
+		
+	}
+	
 	_previousTicks = currentTicks;
 }	
 	
 // constructor
 FrameRate::FrameRate(){
 	cout << "Running at " << _frameRate << " fps" << endl;
+}
+
+// return the ticks
+int FrameRate::ticks(int fps){
+
+	bool success = false;
+
+	// if divisible by fps
+	if( (_previousTicks/100) % fps == 0){
+		success = true;
+	}
+
+	return success;
 }

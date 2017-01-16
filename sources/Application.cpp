@@ -61,6 +61,7 @@ int Application::start(){
     playerBullets.renderBullets();
     // renderPlayerBullets();
     // fut.get();
+    evt.call(frameRate);
 
     loader.presentRenderer();
   }

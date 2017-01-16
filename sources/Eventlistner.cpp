@@ -7,6 +7,7 @@
  *****************************************************/
 
 #include "Eventlistner.h"
+#include "FrameRate.h"
 #include <iostream>
 #include <vector>
 
@@ -39,9 +40,9 @@ void Eventlistner::getEvent(SDL_Event* evt){
     emit("RIGHT_KEY");
   }
 
-  if(keys[SDL_SCANCODE_SPACE]){
-    emit("ATTACK_KEY");
-  }
+  // if(keys[SDL_SCANCODE_SPACE]){
+  //   emit("ATTACK_KEY");
+  // }
 
   if(keys[SDL_SCANCODE_ESCAPE]){
     emit("ESCAPE_KEY");
@@ -54,6 +55,7 @@ bool Eventlistner::initialize(){
   getEvent(&events);
   // if quit registers just quit.
   // A fallback for the application
+
   if(events.type == SDL_QUIT){
     return false;
   }
@@ -61,33 +63,16 @@ bool Eventlistner::initialize(){
 }
 
 
-void Eventlistner::call(){
+void Eventlistner::call(FrameRate fr){
 
+  const Uint8* keys = SDL_GetKeyboardState( NULL );
 
-  // if(keys[SDL_SCANCODE_UP]){
-  //   emit("UP_KEY");
-  // }
-
-  // if(keys[SDL_SCANCODE_DOWN]){
-  //   emit("DOWN_KEY");
-  // }
-
-  // if(keys[SDL_SCANCODE_LEFT]){
-  //   emit("LEFT_KEY");
-  // }
-
-  // if(keys[SDL_SCANCODE_RIGHT]){
-  //   emit("RIGHT_KEY");
-  // }
-
-  // if(keys[SDL_SCANCODE_SPACE]){
-  //   emit("ATTACK_KEY");
-  // }
-
-  // if(keys[SDL_SCANCODE_ESCAPE]){
-  //   emit("ESCAPE_KEY");
-  // }
-
+    // delay the program
+    if(keys[SDL_SCANCODE_SPACE]){
+      if( fr.ticks(2) ){
+        emit("ATTACK_KEY");
+      }
+    }
 }
 
 void Eventlistner::on(string a, functionPointer func){

@@ -2,9 +2,7 @@
 
 // to add the bullet inside the bullet vector
 void Bullets::addBullet(Bullet bullet){
-  if(this->bullet.size() < 4){
     this->bullet.push_back(bullet);
-  }
 }
 
 // to remove the bullet inside the 

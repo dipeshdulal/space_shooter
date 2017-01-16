@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <iostream>
+#include "FrameRate.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ class Eventlistner{
   public:
     bool initialize();
     SDL_Event events;
-    void call();
+    void call(FrameRate);
     void on(string , void (*function)(SDL_Event));
 };
 
