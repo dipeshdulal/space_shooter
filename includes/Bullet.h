@@ -34,6 +34,8 @@
 			void render();
 			void getSpeed(int&);
 			void getPosXY(int&,int&);
+			Bullet(){}
+			~Bullet();
 			Bullet(int, int, SDL_Renderer*);
 			void setPosXY(int, int);
 	};

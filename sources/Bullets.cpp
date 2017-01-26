@@ -3,32 +3,36 @@
 
 // to add the bullet inside the bullet vector
 void Bullets::addBullet(Bullet bullet){
-    this->bullet.push_back(bullet);
+    this->bullet[bulletIndex] = bullet;
+    bulletIndex++;
 }
 
 // to remove the bullet inside the 
 // bullet vector feed directly from the loop
-void Bullets::removeBullet(unsigned int index){
-  cout << "vector bullets" << index << endl;
-  // create a new vector temporary 
-  // delete all the contents of the vector and add all the elements except the
-  // returned index
-  vector<Bullet> tmp;
-  for(unsigned int i = 0; i < bullet.size(); i++){
-    if( i != index ) 
-      tmp.push_back(bullet[i]);
+void Bullets::removeBullet(int index){
+  
+  Bullet *tmp = new Bullet[30];
+  for (int i = index; i < 30; ++i)
+    bullet[i] = bullet[i + 1]; 
+
+  for(int i = 0; i < 30; i++){
+    tmp[i] = bullet[i];
   }
-  bullet.clear();
-  vector<Bullet>().swap( bullet );
-  for(unsigned int i = 0; i < tmp.size(); i++){
-    bullet.push_back(tmp[i]);
-  }  
-  // delete the tmp array
-  tmp.clear();
-  vector<Bullet>().swap( tmp );
+
+  bullet = nullptr;
+  delete[] bullet;
+  bullet = new Bullet[30];
+
+  for(int i = 0; i < 30; i++){
+    bullet[i] = tmp[i];
+  }
+
+  tmp = nullptr;
+  delete[] tmp;
+  bulletIndex--;
 }
 
-void Bullets::renderIndividualBullet(unsigned int index){
+void Bullets::renderIndividualBullet(int index){
   int x,y,speed;
   bullet[index].getPosXY(x,y);
   bullet[index].getSpeed(speed);
@@ -39,7 +43,7 @@ void Bullets::renderIndividualBullet(unsigned int index){
 
 // render all the bullets avialable to the class
 void Bullets::renderBullets(){
-  for(unsigned int i = 0; i < bullet.size(); i++){
+  for(int i = 0; i < bulletIndex; i++){
     int x,y;
     bullet[i].getPosXY(x,y);
     cout << x << ", " << y << endl;

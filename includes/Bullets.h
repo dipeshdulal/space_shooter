@@ -11,12 +11,14 @@
 	// render all the bullets to the screen
 	class Bullets{
 		private:
-			vector<Bullet> bullet;
-			void removeBullet(unsigned int);
-			void renderIndividualBullet(unsigned int);
+			Bullet *bullet = new Bullet[30];
+			int bulletIndex;
+			void removeBullet(int);
+			void renderIndividualBullet(int);
 		public:
 			void addBullet(Bullet);
 			void renderBullets();
+			Bullets(){ bulletIndex = 0; }
 
 	};
 

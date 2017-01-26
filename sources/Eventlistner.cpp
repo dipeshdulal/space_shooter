@@ -21,7 +21,8 @@
 #endif
 
 void Eventlistner::getEvent(SDL_Event* evt){
-  SDL_PollEvent(evt);
+
+  // if there are no events then return 
   const Uint8* keys = SDL_GetKeyboardState( NULL );
 
   if(keys[SDL_SCANCODE_UP]){
@@ -48,6 +49,8 @@ void Eventlistner::getEvent(SDL_Event* evt){
     emit("ESCAPE_KEY");
   }
 
+  SDL_PollEvent(evt);
+
 }
 
 bool Eventlistner::initialize(){
@@ -65,14 +68,39 @@ bool Eventlistner::initialize(){
 
 void Eventlistner::call(FrameRate fr){
 
-  const Uint8* keys = SDL_GetKeyboardState( NULL );
-
     // delay the program
-    if(keys[SDL_SCANCODE_SPACE]){
-      if( fr.ticks(2) ){
+    // int i = 0;
+    // if(events.type == SDL_KEYUP){
+      // cout << "key up " << i++ << endl;
+      // if(events.key.keysym.sym == SDLK_SPACE){
+        // cout << "spaceKeyUp" << endl;
+        // emit("ATTACK_KEY");
+      // }
+    // }
+    // if(keys[SDL_SCANCODE_SPACE]){
+      // if( fr.ticks(2) ){
+        // emit("ATTACK_KEY");
+      // }
+    // }
+    SDL_Event evt;
+    // SDL_Event evt;
+    if(SDL_PollEvent(&evt) == 1){
+
+      const Uint8* keys = SDL_GetKeyboardState( NULL );
+      if(keys[SDL_SCANCODE_SPACE]){
         emit("ATTACK_KEY");
       }
+      // if(events.type == SDL_KEYDOWN){
+      //   // cout << "key up " << endl;
+      //   if(events.key.keysym.sym == SDLK_SPACE){
+      //     // cout << "spaceKeyUp" << endl;
+      //      // if( fr.ticks(2) )
+      //       emit("ATTACK_KEY");
+      //     // 
+      //   }
+      // }
     }
+
 }
 
 void Eventlistner::on(string a, functionPointer func){

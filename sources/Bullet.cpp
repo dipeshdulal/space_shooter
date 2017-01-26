@@ -31,6 +31,10 @@ void Bullet::getPosXY(int &x, int &y){
 	y = _posY;
 }
 
+Bullet::~Bullet(){
+	_textureLoader = nullptr;
+}
+
 // to set the position x and y of the bullet
 void Bullet::setPosXY(int x, int y){
 	_posX = x;
