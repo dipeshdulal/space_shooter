@@ -1,4 +1,5 @@
 #include "Bullets.h"
+#include "Bullet.h"
 
 // to add the bullet inside the bullet vector
 void Bullets::addBullet(Bullet bullet){
@@ -9,7 +10,22 @@ void Bullets::addBullet(Bullet bullet){
 // bullet vector feed directly from the loop
 void Bullets::removeBullet(unsigned int index){
   cout << "vector bullets" << index << endl;
-  bullet.erase(bullet.begin()+index);
+  // create a new vector temporary 
+  // delete all the contents of the vector and add all the elements except the
+  // returned index
+  vector<Bullet> tmp;
+  for(unsigned int i = 0; i < bullet.size(); i++){
+    if( i != index ) 
+      tmp.push_back(bullet[i]);
+  }
+  bullet.clear();
+  vector<Bullet>().swap( bullet );
+  for(unsigned int i = 0; i < tmp.size(); i++){
+    bullet.push_back(tmp[i]);
+  }  
+  // delete the tmp array
+  tmp.clear();
+  vector<Bullet>().swap( tmp );
 }
 
 void Bullets::renderIndividualBullet(unsigned int index){
@@ -30,7 +46,7 @@ void Bullets::renderBullets(){
     if(y < 0){
       // bullet is out of the screen remove the bullet from vector
       removeBullet(i);    
-      break;
+      continue;
     }
     renderIndividualBullet(i);
   }
