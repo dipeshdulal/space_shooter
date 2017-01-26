@@ -8,6 +8,7 @@ void Bullets::addBullet(Bullet bullet){
 // to remove the bullet inside the 
 // bullet vector feed directly from the loop
 void Bullets::removeBullet(unsigned int index){
+  cout << "vector bullets" << index << endl;
   bullet.erase(bullet.begin()+index);
 }
 
