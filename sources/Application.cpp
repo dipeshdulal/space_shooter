@@ -29,6 +29,7 @@ using namespace std;
 #include "Player.h"
 #include "Bullets.h"
 
+
 // constructor
 Application::Application(){
   windowElements.window = NULL;
