@@ -76,7 +76,8 @@ void Player::init(){
 	PlayerPosition::posX = 640/2;
 	PlayerPosition::posY = 0;
 	PlayerPosition::speed = 1;
-	PlayerPosition::_srcImage.y = 941;
+	PlayerPosition::_srcImage.x = 247;
+	PlayerPosition::_srcImage.y = 84;
 	PlayerPosition::_srcImage.w = 99;
 	PlayerPosition::_srcImage.h = 75;
 	PlayerPosition::_dstImage.x = PlayerPosition::posX;
