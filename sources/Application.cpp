@@ -28,6 +28,7 @@ using namespace std;
 #include "TextureLoader.h"
 #include "Player.h"
 #include "Bullets.h"
+#include "Enemy.h"
 
 // constructor
 Application::Application(){
@@ -48,7 +49,7 @@ int Application::start(){
   Player player(evt, windowElements.renderer);
   // future<void> fut = async(renderPlayerBullets);
   loader.load("resources/darkPurple.png");
-
+  Enemy e(0, 0, windowElements.renderer);
   // SDL_Rect src = {211,941,99,75};
   // SDL_Rect dst = {100,100,99/2,75/2};
 
@@ -61,6 +62,7 @@ int Application::start(){
     playerBullets.renderBullets();
     // renderPlayerBullets();
     // fut.get();
+    e.render();
     evt.call(frameRate);
 
     loader.presentRenderer();

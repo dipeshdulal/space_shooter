@@ -16,7 +16,8 @@ _OBJ = main.o \
 			 TextureLoader.o \
 			 Player.o \
 			 Bullet.o \
-			 Bullets.o
+			 Bullets.o \
+			 Enemy.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 

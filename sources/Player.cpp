@@ -74,9 +74,8 @@ void PlayerEvent::_attack(SDL_Event e){
 
 void Player::init(){
 	PlayerPosition::posX = 640/2;
-	PlayerPosition::posY = 480/2;
+	PlayerPosition::posY = 0;
 	PlayerPosition::speed = 1;
-	PlayerPosition::_srcImage.x = 211;
 	PlayerPosition::_srcImage.y = 941;
 	PlayerPosition::_srcImage.w = 99;
 	PlayerPosition::_srcImage.h = 75;
