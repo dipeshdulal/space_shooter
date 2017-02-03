@@ -1,7 +1,7 @@
 /**************************************************
  * Implementation of the player class
  *
- * @author     Dipesh Dulal
+ * @author     Dipesh Dulal, Abhimanyu Pandey
  * @version    1.0
  * @since      2016-12-11
  **************************************************/

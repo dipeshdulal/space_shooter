@@ -87,6 +87,9 @@ void Eventlistner::call(FrameRate fr){
     if(SDL_PollEvent(&evt) == 1){
 
       const Uint8* keys = SDL_GetKeyboardState( NULL );
+
+      // check if its a short keypress and emit the event
+
       if(keys[SDL_SCANCODE_SPACE]){
         emit("ATTACK_KEY");
       }

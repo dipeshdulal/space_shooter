@@ -28,6 +28,7 @@ SDL_Texture* TextureLoader::load(string path){
 
 	// to clear the loaded surface
 	SDL_FreeSurface( _surface );
+	_surface = NULL;
 
 	return _texture;
 }

@@ -49,7 +49,7 @@ int Application::start(){
   Player player(evt, windowElements.renderer);
   // future<void> fut = async(renderPlayerBullets);
   loader.load("resources/darkPurple.png");
-  Enemy e(0, 0, windowElements.renderer);
+  Enemy e(10, 10, windowElements.renderer);
   // SDL_Rect src = {211,941,99,75};
   // SDL_Rect dst = {100,100,99/2,75/2};
 
@@ -60,6 +60,7 @@ int Application::start(){
     loader.renderTexture(NULL, NULL);
     player.render();
     playerBullets.renderBullets();
+    // enemys.render();
     // renderPlayerBullets();
     // fut.get();
     e.render();

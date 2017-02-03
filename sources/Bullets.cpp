@@ -22,7 +22,7 @@ void Bullets::removeBullet(int index){
   bullet = nullptr;
   delete[] bullet;
   bullet = new Bullet[30];
-
+  cout << "Deleted" << endl;
   for(int i = 0; i < 30; i++){
     bullet[i] = tmp[i];
   }

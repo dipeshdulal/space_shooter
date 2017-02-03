@@ -1,0 +1,4 @@
+#ifndef SPACESHOOTER_ENEMYS
+		#define SPACESHOOTER_ENEMYS
+
+#endif

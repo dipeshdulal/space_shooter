@@ -11,6 +11,8 @@
 
 // bullet constructor
 Bullet::Bullet(int x, int y, SDL_Renderer* renderer){
+	// sound goes here
+	// Sound.speak();
 	_posX = x;
 	_posY = y;
 	_textureLoader = new TextureLoader(renderer);
