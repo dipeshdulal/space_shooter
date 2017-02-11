@@ -31,6 +31,7 @@
 			int ticks(int);
 			// constructor
 			FrameRate();
+			int getTicks();
 	};
 
 

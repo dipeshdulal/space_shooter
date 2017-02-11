@@ -28,14 +28,16 @@
 	class Enemy{
 		private:
 			SDL_Rect _enemyPos = {425, 468, 93, 84};
-			int _posX, _posY, speed = 1;
+			int _posX, _posY;
+			float speed;
 			TextureLoader *_textureLoader = NULL;
 			void init();
 		public:
+			void setSpeed(float);
 			void render();
-			void getSpeed(int&);
+			void getSpeed(float&);
 			void getPosXY(int&,int&);
-			Enemy(){}
+			Enemy();
 			~Enemy();
 			Enemy(int, int, SDL_Renderer*);
 			void setPosXY(int, int);

@@ -47,3 +47,7 @@ int FrameRate::ticks(int fps){
 
 	return success;
 }
+
+int FrameRate::getTicks(){
+	return _previousTicks;
+}

@@ -29,6 +29,7 @@ using namespace std;
 #include "Player.h"
 #include "Bullets.h"
 #include "Enemy.h"
+#include "Enemys.h"
 
 // constructor
 Application::Application(){
@@ -49,7 +50,8 @@ int Application::start(){
   Player player(evt, windowElements.renderer);
   // future<void> fut = async(renderPlayerBullets);
   loader.load("resources/darkPurple.png");
-  Enemy e(10, 10, windowElements.renderer);
+  Enemy enemy(0, 0, windowElements.renderer);
+  // enemys.addEnemy(enemy);
   // SDL_Rect src = {211,941,99,75};
   // SDL_Rect dst = {100,100,99/2,75/2};
 
@@ -63,10 +65,10 @@ int Application::start(){
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
-    e.render();
-    evt.call(frameRate);
-
+    enemys.push(frameRate.getTicks(), enemy);
+    enemys.renderEnemy();
     loader.presentRenderer();
+    evt.call(frameRate);
   }
 
   return 0;

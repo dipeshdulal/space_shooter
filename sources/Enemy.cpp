@@ -22,13 +22,21 @@ void Enemy::init(){
 }
 
 
-void Enemy::getSpeed(int &speed){
-	speed = this->speed;
+void Enemy::getSpeed(float &s){
+	s = speed;
+}
+
+void Enemy::setSpeed(float s){
+	speed = s;
 }
 
 void Enemy::getPosXY(int &x, int &y){
 	x = _posX;
 	y = _posY;
+}
+
+Enemy::Enemy(){
+	speed = 0.01;
 }
 
 Enemy::~Enemy(){
