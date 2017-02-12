@@ -37,6 +37,7 @@ void Enemys::renderIndividualEnemy(int i){
 	enemy[i].getPosXY(x,y);
 	float speed;
 	enemy[i].getSpeed(speed);
+	cout << "Speed: " << speed << endl;
 	speed += 0.1;
 	enemy[i].setSpeed(speed);
 	if(int(speed) % 2){
@@ -80,8 +81,11 @@ void Enemys::push(int fr, Enemy enemy){
 	if(( fr % 50 ) == 0) {
 		enemy_Added = false;
 	}
+	int r = ( rand() % 640 );
 	if(( fr % 50 ) && !enemy_Added){
-		int r = ( rand() % 640 );
+
+		int index = r % 4;
+		enemy.type(index);
 		enemy.setPosXY(r, 10);
 		// cout << "Add Enemy" << endl;
 		addEnemy(enemy);

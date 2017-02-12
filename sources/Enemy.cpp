@@ -13,6 +13,7 @@
 Enemy::Enemy(int x, int y, SDL_Renderer* renderer){
 	_posX = x;
 	_posY = y;
+	speed = 0.01;
 	_textureLoader = new TextureLoader(renderer);
 	init();
 }
@@ -39,6 +40,10 @@ Enemy::Enemy(){
 	speed = 0.01;
 }
 
+void Enemy::type(int i){
+	_type = i;
+}
+
 Enemy::~Enemy(){
 	_textureLoader = nullptr;
 }
@@ -50,6 +55,18 @@ void Enemy::setPosXY(int x, int y){
 }
 
 void Enemy::render(){
+	switch(_type){
+		case 0:
+			_enemyPos.x = 425;
+			_enemyPos.y = 384;
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+	}
 	SDL_Rect enemyPos = {_posX, _posY, 93/2, 84/2};
     _textureLoader->renderTexture(&_enemyPos, &enemyPos);
 }

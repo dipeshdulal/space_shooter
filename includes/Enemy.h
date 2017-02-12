@@ -29,10 +29,12 @@
 		private:
 			SDL_Rect _enemyPos = {425, 468, 93, 84};
 			int _posX, _posY;
-			float speed;
+			float speed = 0.01;
+			int _type;
 			TextureLoader *_textureLoader = NULL;
 			void init();
 		public:
+			void type(int);
 			void setSpeed(float);
 			void render();
 			void getSpeed(float&);
