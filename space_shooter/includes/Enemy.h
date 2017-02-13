@@ -1,0 +1,49 @@
+
+/*****************************************************
+ * Enemy Loader Class to render enemy in the given path
+ *
+ * @author    Dipesh Dulal, Abhimanyu Pandey, Dipesh Shrestha
+ * @version   1.0
+ * @since     2017-01-28
+ *****************************************************/
+
+#ifndef SPACESHOOTER_ENEMY
+	#define SPACESHOOTER_ENEMY
+	
+	 // include the sdl
+	#ifdef _WIN32
+	  #include <SDL.h>
+	#endif
+
+	#ifdef __linux
+	  #include <SDL2/SDL.h>
+	#endif
+	
+	#include <vector>
+	#include <iostream>
+	#include "TextureLoader.h"
+
+	using namespace std;
+
+	class Enemy{
+		private:
+			int index;
+			SDL_Rect _enemyPos;
+			int _posX, _posY;
+			float speed;
+			TextureLoader *_textureLoader = NULL;
+			void init();
+		public:
+			void setSpeed(float);
+			void render();
+			void getSpeed(float&);
+			void getPosXY(int&,int&);
+			void enemytype(int);
+			Enemy();
+			~Enemy();
+			Enemy(int, int, SDL_Renderer*);
+			void setPosXY(int, int);
+	};
+
+
+#endif
