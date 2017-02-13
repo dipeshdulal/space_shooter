@@ -1,7 +1,7 @@
 /**************************************************
  * Implementation of the main class
  *
- * @author     Dipesh Dulal, Abhimanyu Pandey
+ * @author     Dipesh Dulal, Abhimanyu Pandey, Dexter Shrestha
  * @version    1.0
  * @since      2016-10-15
  **************************************************/
@@ -30,6 +30,7 @@ using namespace std;
 #include "Bullets.h"
 #include "Enemy.h"
 #include "Enemys.h"
+#include "Collision.h"
 
 // constructor
 Application::Application(){
@@ -51,6 +52,7 @@ int Application::start(){
   // future<void> fut = async(renderPlayerBullets);
   loader.load("resources/darkPurple.png");
   Enemy enemy(0, 0, windowElements.renderer);
+  Collision collider;
   // enemys.addEnemy(enemy);
   // SDL_Rect src = {211,941,99,75};
   // SDL_Rect dst = {100,100,99/2,75/2};
@@ -65,6 +67,15 @@ int Application::start(){
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
+
+    if(collider.isCollidedBE(playerBullets,enemys)){
+      // cout<<"Collision"<<endl;
+    }
+    if(collider.isCollidedPE(player,enemys)){
+      // cout<<"Collision"<<endl;
+    }
+
+
     enemys.push(frameRate.getTicks(), enemy);
     enemys.renderEnemy();
     loader.presentRenderer();

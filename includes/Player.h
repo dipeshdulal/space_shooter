@@ -2,7 +2,7 @@
  * Player class. Used for player movement and 
  * collision detection for later part of development.
  *
- * @author    Dipesh Dulal
+ * @author    Dipesh Dulal, Dexter Shrestha
  * @version   1.0
  * @since     2016-10-15
  *****************************************************/
@@ -32,6 +32,7 @@ class Player{
 		Player(Eventlistner&, SDL_Renderer*);
 		void attachEventListners(Eventlistner &);
 		void render();
+		void getPosXY(int&,int&);
 };
 
 // a namespace containing movement of player

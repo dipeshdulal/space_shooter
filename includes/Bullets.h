@@ -14,11 +14,14 @@
 			Bullet *bullet = new Bullet[30];
 			int bulletIndex;
 			void removeBullet(int);
+			int _posX,_posY;
 			void renderIndividualBullet(int);
 		public:
 			void addBullet(Bullet);
 			void renderBullets();
 			Bullets(){ bulletIndex = 0; }
+			Bullet* getBullets();
+			int getIndex();
 
 	};
 

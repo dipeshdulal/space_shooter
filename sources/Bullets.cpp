@@ -1,5 +1,20 @@
+/*****************************************************
+ * Implementation fo Enemys class
+ *
+ * @author    Dipesh Dulal, Dexter Shrestha
+ * @version   1.0
+ * @since     2017-02-11
+ *****************************************************/
 #include "Bullets.h"
 #include "Bullet.h"
+
+Bullet* Bullets::getBullets(){
+  return bullet;
+}
+
+int Bullets::getIndex(){
+  return bulletIndex;
+}
 
 // to add the bullet inside the bullet vector
 void Bullets::addBullet(Bullet bullet){
@@ -22,7 +37,7 @@ void Bullets::removeBullet(int index){
   bullet = nullptr;
   delete[] bullet;
   bullet = new Bullet[30];
-  cout << "Deleted" << endl;
+  // cout << "Deleted" << endl;
   for(int i = 0; i < 30; i++){
     bullet[i] = tmp[i];
   }
@@ -46,7 +61,7 @@ void Bullets::renderBullets(){
   for(int i = 0; i < bulletIndex; i++){
     int x,y;
     bullet[i].getPosXY(x,y);
-    cout << x << ", " << y << endl;
+    // cout << x << ", " << y << endl;
     if(y < 0){
       // bullet is out of the screen remove the bullet from vector
       removeBullet(i);    

@@ -1,7 +1,7 @@
 /**************************************************
  * Implementation of the player class
  *
- * @author     Dipesh Dulal, Abhimanyu Pandey
+ * @author     Dipesh Dulal, Abhimanyu Pandey, Dexter Shrestha
  * @version    1.0
  * @since      2016-12-11
  **************************************************/
@@ -24,6 +24,11 @@ namespace PlayerPosition{
 }
 
 SDL_Renderer *gRenderer = NULL;
+
+void Player::getPosXY(int &x, int &y){
+	x = PlayerPosition::posX;
+	y = PlayerPosition::posY;
+}
 
 // left key logic 
 void PlayerEvent::_moveLeft(SDL_Event e){

@@ -1,3 +1,10 @@
+/*****************************************************
+ * Implementation fo Enemys class
+ *
+ * @author    Dipesh Dulal, Dexter Shrestha
+ * @version   1.0
+ * @since     2017-02-11
+ *****************************************************/
 #ifndef SPACESHOOTER_ENEMYS
 		#define SPACESHOOTER_ENEMYS
 
@@ -13,6 +20,7 @@
 			int index;
 			// float speed;
 			void removeEnemy(int);
+			int _posX,_posY;
 			void renderIndividualEnemy(int);
 		public:
 			void addEnemy(Enemy);
@@ -22,6 +30,8 @@
 				index = 0;
 				// speed
 			}
+			Enemy* getEnemys();
+			int getIndex();
 	};
 
 	extern Enemys enemys;

@@ -1,12 +1,20 @@
 /*****************************************************
  * Implementation fo Enemys class
  *
- * @author    Dipesh Dulal
+ * @author    Dipesh Dulal, Dexter Shrestha
  * @version   1.0
  * @since     2017-02-11
  *****************************************************/
 #include "Enemys.h"
 #include "Enemy.h"
+
+Enemy* Enemys::getEnemys(){
+	return enemy;
+}
+
+int Enemys::getIndex(){
+	return index;
+}
 
 void Enemys::removeEnemy(int i){
 	Enemy *tmp = new Enemy[30];
@@ -28,7 +36,7 @@ void Enemys::removeEnemy(int i){
 	tmp = nullptr;
 	delete[] tmp;
 	index--;	
-	cout << "ENEMY INDEX: " << index << endl;
+	// cout << "ENEMY INDEX: " << index << endl;
 }
 
 // render individual enemy at index i
@@ -37,13 +45,12 @@ void Enemys::renderIndividualEnemy(int i){
 	enemy[i].getPosXY(x,y);
 	float speed;
 	enemy[i].getSpeed(speed);
-	cout << "Speed: " << speed << endl;
+	// cout << "Speed: " << speed << endl;
 	speed += 0.1;
 	enemy[i].setSpeed(speed);
-	if(int(speed) % 2){
+	if( (int(speed) % 3 ) == 0){
 		y += 1;
 	}
-
 	enemy[i].setPosXY(x,y);
 	enemy[i].render();
 }
@@ -57,7 +64,7 @@ void Enemys::renderEnemy(){
 	for(int i = 0; i < index; i++){
 		int x,y;
 		enemy[i].getPosXY(x,y);
-		cout << x << ", " << y << endl;
+		// cout << x << ", " << y << endl;
 		// screen height
 		if(y > 640){
 		    // bullet is out of the screen remove the bullet from vector
@@ -77,12 +84,14 @@ void Enemys::push(int fr, Enemy enemy){
 
 	// here make this happen more freequently or not based on the level 
 	// of the game that is to be added later
+	
+	int a = fr % 30;
 
-	if(( fr % 50 ) == 0) {
+	if(a == 0) {
 		enemy_Added = false;
 	}
-	int r = ( rand() % 640 );
-	if(( fr % 50 ) && !enemy_Added){
+	int r = ( rand() % 590 ) + 20;
+	if(a && !enemy_Added){
 
 		int index = r % 4;
 		enemy.type(index);

@@ -18,7 +18,8 @@ _OBJ = main.o \
 			 Bullet.o \
 			 Bullets.o \
 			 Enemy.o \
-			 Enemys.o 
+			 Enemys.o \
+			 Collision.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
