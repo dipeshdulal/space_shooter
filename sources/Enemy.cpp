@@ -55,17 +55,27 @@ void Enemy::setPosXY(int x, int y){
 }
 
 void Enemy::render(){
+		_enemyPos.w = 93;
+		_enemyPos.h = 84;
 	switch(_type){
 		case 0:
-			_enemyPos.x = 425;
-			_enemyPos.y = 384;
-			break;
+			_enemyPos.x = 425; 
+			_enemyPos.y = 468;
+		break;
+	
 		case 1:
-			break;
-		case 2:
-			break;
+			_enemyPos.x = 143;
+			_enemyPos.y = 293;
+		break;
+		
+		case 2:	
+			_enemyPos.x = 425;
+			_enemyPos.y = 552;
+		break;
+
 		case 3:
-			break;
+			_enemyPos.x = 423;
+			_enemyPos.y = 728;
 	}
 	SDL_Rect enemyPos = {_posX, _posY, 93/2, 84/2};
     _textureLoader->renderTexture(&_enemyPos, &enemyPos);
