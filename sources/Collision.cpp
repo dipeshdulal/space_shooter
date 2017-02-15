@@ -9,6 +9,7 @@ using namespace std;
 
 bool becollision = false;
 bool pecollision = false;
+// int previousIndexCol
 
 bool Collision::isCollidedBE(Bullets bullets,Enemys enemys){
 	
@@ -24,45 +25,63 @@ bool Collision::isCollidedBE(Bullets bullets,Enemys enemys){
 		enemysArray[i].getPosXY(PosX_enemy, PosY_enemy);
 		for(int j = 0; j < bulletIndex;  j++){
 			bulletArray[j].getPosXY(PosX_bullet, PosY_bullet);
-			
+			// if(!BECollisionDetected() && !becollision){
+			// 	continue;
+			// }
+			// cout << PosX_bullet << ":" << PosY_bullet << endl;
+
 			if(!(BECollisionDetected() && becollision) ){
 				becollision = false;
+				// continue;
 			}
 
 			if(BECollisionDetected() && !becollision){
 				becollision = true;
-				cout << "BE Collision" << endl;
+				bulletCollisionIndex = j;
+				enemyCollisionIndex = i;
+				// break;
 				return true;
 			}
 			
 			// return BECollisionDetected();
 		}
+		// return becollision;
 	}
+	
 
+	return false;
 	// bullets.getPosXY(PosX_bullet,PosY_bullet);
 
-	// enemys.getPosXY(PosX_enemy,PosY_enemy);
-	// delete[] enemysArray;
-	// delete[] bulletArray;
-	return false;
+	// enemys.getPosXY(PosX_enemy,PosY_enemy); 
+}
+
+int Collision::getBulletCollisionIndex(){
+	return bulletCollisionIndex;
+}
+
+int Collision::getEnemyCollisionIndex(){
+	return enemyCollisionIndex;
 }
 
 bool Collision::BECollisionDetected(){
-	if(PosY_enemy+84/2<=PosY_bullet && PosY_bullet<=PosY_enemy+84/2+20 ){
+	// if(PosY_enemy+84/2 <= PosY_bullet && PosY_bullet <=PosY_enemy+84/2+20 ){
 	//cout<<"Y Collision"<<endl;
 	//cout<<"Bullet :"<<PosX_bullet<<", "<<PosY_bullet<<endl;	
-		if(PosX_bullet>=PosX_enemy && PosX_bullet<= PosX_enemy+93/2){
-	//	cout<<"X Collision"<<endl;
-	//	cout<<"Enemy: "<<PosX_enemy<<","<<PosY_enemy<<endl;
-			return true;
-		}
-		else {
-			return false;
-		}
+		if(PosY_bullet == PosY_enemy){
+			if(PosX_bullet >= PosX_enemy && PosX_bullet <= PosX_enemy+93/2){
+			//	cout<<"X Collision"<<endl;
+			//	cout<<"Enemy: "<<PosX_enemy<<","<<PosY_enemy<<endl;
+				return true;
+			}
+			else {
+				return false;
+			}	
+		}else{return false; }
+		
 
-	}else{
-		return false;
-	}
+	// }else{
+		// return false;
+	// }
 }
 
 
@@ -82,7 +101,7 @@ bool Collision::isCollidedPE(Player player, Enemys enemys){
 
 		if(PECollisionDetected() && !pecollision){
 			pecollision = true;
-			cout << "Enemy Player Collision" << endl;
+			// cout << "Enemy Player Collision" << endl;
 			return true;
 		}
 

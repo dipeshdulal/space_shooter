@@ -68,11 +68,24 @@ int Application::start(){
     // renderPlayerBullets();
     // fut.get();
 
-    if(collider.isCollidedBE(playerBullets,enemys)){
-      // cout<<"Collision"<<endl;
+    if(collider.isCollidedBE(playerBullets, enemys)){
+      cout<<"CollisionBE"<<endl;
+       // int enemyIndex = collider.getEnemyCollisionIndex();
+       // int bulletIndex = collider.getBulletCollisionIndex();
+
+       // get postion
+
+       // playerBullets.remove(bulletIndex);
+
+       // bulletIndex.remove(enemyIndex);
+
+        
+        // positionma eplode garaune
     }
     if(collider.isCollidedPE(player,enemys)){
-      // cout<<"Collision"<<endl;
+      cout<<"CollisionPE"<<endl;
+      //int 
+      
     }
 
 
@@ -96,7 +109,7 @@ bool Application::initialize(){
 
   // creating window to draw on
   windowElements.window = SDL_CreateWindow(
-      "Spacee Shooter",
+      "Space Shooter",
       SDL_WINDOWPOS_CENTERED,
       SDL_WINDOWPOS_CENTERED,
       windowElements.WINDOW_WIDTH,

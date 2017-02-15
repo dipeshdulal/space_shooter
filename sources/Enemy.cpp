@@ -57,7 +57,7 @@ void Enemy::setPosXY(int x, int y){
 void Enemy::render(){
 	_enemyPos.w = 93;
 	_enemyPos.h = 84;
-	cout << _type << endl;
+	// cout << _type << endl;
 	switch(_type){
 		case 0:
 		_enemyPos.x = 425; 

@@ -20,13 +20,16 @@
 		int PosX_enemy,PosY_enemy;
 		int PosX_player,PosY_player;
 		int min;
+		int bulletCollisionIndex;
+		int enemyCollisionIndex;
 	public:
 		Collision(){};
 		bool isCollidedBE(Bullets,Enemys);
 		bool isCollidedPE(Player, Enemys);
 		bool BECollisionDetected();
 		bool PECollisionDetected();
-
+		int getBulletCollisionIndex();
+		int getEnemyCollisionIndex();
 	};
 
 
