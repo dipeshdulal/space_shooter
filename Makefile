@@ -6,7 +6,7 @@ BDIR = bin
 DDIR = data
 CC = g++
 CFLAGS = -Wall -g -std=c++11
-LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
+LFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 PROG = SpaceShooter
 _OBJ = main.o \
 			 SDL_util.o \
@@ -19,7 +19,8 @@ _OBJ = main.o \
 			 Bullets.o \
 			 Enemy.o \
 			 Enemys.o \
-			 Collision.o
+			 Collision.o \
+			 Sound.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 

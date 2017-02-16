@@ -31,6 +31,7 @@ using namespace std;
 #include "Enemy.h"
 #include "Enemys.h"
 #include "Collision.h"
+#include "Sound.h"
 
 // constructor
 Application::Application(){
@@ -44,7 +45,6 @@ int Application::start(){
     return -1;
   }
 
-
   Eventlistner evt;
   FrameRate frameRate;
   TextureLoader loader(windowElements.renderer);
@@ -53,9 +53,13 @@ int Application::start(){
   loader.load("resources/darkPurple.png");
   Enemy enemy(0, 0, windowElements.renderer);
   Collision collider;
+  string shooting = "resources/shooting_sound.wav";
+  string explosion = "resources/explosion.wav";
   // enemys.addEnemy(enemy);
   // SDL_Rect src = {211,941,99,75};
   // SDL_Rect dst = {100,100,99/2,75/2};
+  gBulletSound.load(shooting);
+  gExplosionSound.load(explosion);
 
   // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
@@ -70,21 +74,26 @@ int Application::start(){
 
     if(collider.isCollidedBE(playerBullets, enemys)){
       cout<<"CollisionBE"<<endl;
-       // int enemyIndex = collider.getEnemyCollisionIndex();
-       // int bulletIndex = collider.getBulletCollisionIndex();
+      int enemyIndex = collider.getEnemyCollisionIndex();
+      int bulletIndex = collider.getBulletCollisionIndex();
 
        // get postion
 
-       // playerBullets.remove(bulletIndex);
+      playerBullets.remove(bulletIndex);
+      enemys.remove(enemyIndex);
+      gExplosionSound.play();
+      // bulletIndex.remove(enemyIndex);
 
-       // bulletIndex.remove(enemyIndex);
 
-        
         // positionma eplode garaune
     }
     if(collider.isCollidedPE(player,enemys)){
       cout<<"CollisionPE"<<endl;
+      int enemyIndex = collider.getEnemyCollisionIndex();
+      enemys.remove(enemyIndex);
+      gExplosionSound.play();      
       //int 
+      // enemy index
       
     }
 
@@ -109,13 +118,13 @@ bool Application::initialize(){
 
   // creating window to draw on
   windowElements.window = SDL_CreateWindow(
-      "Space Shooter",
-      SDL_WINDOWPOS_CENTERED,
-      SDL_WINDOWPOS_CENTERED,
-      windowElements.WINDOW_WIDTH,
-      windowElements.WINDOW_HEIGHT,
-      SDL_WINDOW_SHOWN
-  );
+    "Space Shooter",
+    SDL_WINDOWPOS_CENTERED,
+    SDL_WINDOWPOS_CENTERED,
+    windowElements.WINDOW_WIDTH,
+    windowElements.WINDOW_HEIGHT,
+    SDL_WINDOW_SHOWN
+    );
 
   if( windowElements.window == NULL){
     // window creation failed

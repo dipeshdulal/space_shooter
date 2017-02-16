@@ -7,6 +7,7 @@
  *****************************************************/
 #include "Bullets.h"
 #include "Bullet.h"
+#include "Sound.h"
 
 Bullet* Bullets::getBullets(){
   return bullet;
@@ -16,16 +17,19 @@ int Bullets::getIndex(){
   return bulletIndex;
 }
 
+
 // to add the bullet inside the bullet vector
 void Bullets::addBullet(Bullet bullet){
-    this->bullet[bulletIndex] = bullet;
-    bulletIndex++;
+  // Sound.speak();
+  gBulletSound.play();
+  this->bullet[bulletIndex] = bullet;
+  bulletIndex++;
 }
 
 // to remove the bullet inside the 
 // bullet vector feed directly from the loop
 void Bullets::removeBullet(int index){
-  
+
   Bullet *tmp = new Bullet[30];
   for (int i = index; i < 30; ++i)
     bullet[i] = bullet[i + 1]; 
@@ -46,6 +50,16 @@ void Bullets::removeBullet(int index){
   delete[] tmp;
   bulletIndex--;
 }
+
+void Bullets::remove(int i){
+  // cout << index << " Index" << endl;
+  // for(int i=index; i<30; i++){
+  //   bullet[i] = bullet[i+1];
+  // }
+  // remove the bullet from the given index
+  removeBullet(i);
+}
+
 
 void Bullets::renderIndividualBullet(int index){
   int x,y,speed;

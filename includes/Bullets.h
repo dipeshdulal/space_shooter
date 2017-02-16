@@ -22,6 +22,7 @@
 			Bullets(){ bulletIndex = 0; }
 			Bullet* getBullets();
 			int getIndex();
+			void remove(int);
 
 	};
 

@@ -15,6 +15,14 @@ Enemy* Enemys::getEnemys(){
 int Enemys::getIndex(){
 	return index;
 }
+void Enemys::remove(int pos){
+	// Enemy e;
+	// enemy[index] = e; 
+	// for(int i= pos; i < index - 1; i++){
+	// 	enemy[i] = enemy[i+1];
+	// }
+	removeEnemy(pos);
+}
 
 void Enemys::removeEnemy(int i){
 	Enemy *tmp = new Enemy[30];

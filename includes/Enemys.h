@@ -32,6 +32,7 @@
 			}
 			Enemy* getEnemys();
 			int getIndex();
+			void remove(int);
 	};
 
 	extern Enemys enemys;
