@@ -20,7 +20,8 @@ _OBJ = main.o \
 			 Enemy.o \
 			 Enemys.o \
 			 Collision.o \
-			 Sound.o
+			 Sound.o \
+			 TextLoader.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 

@@ -65,6 +65,7 @@ bool Eventlistner::initialize(){
   return true;
 }
 
+bool previousSpace = false;
 
 void Eventlistner::call(FrameRate fr){
 
@@ -90,9 +91,17 @@ void Eventlistner::call(FrameRate fr){
 
       // check if its a short keypress and emit the event
 
-      if(keys[SDL_SCANCODE_SPACE]){
+
+
+      if(keys[SDL_SCANCODE_SPACE] && !previousSpace){
         emit("ATTACK_KEY");
+        previousSpace = true;
       }
+
+      if(!(keys[SDL_SCANCODE_SPACE] && previousSpace)){
+        previousSpace = false;
+      }      
+      
       // if(events.type == SDL_KEYDOWN){
       //   // cout << "key up " << endl;
       //   if(events.key.keysym.sym == SDLK_SPACE){

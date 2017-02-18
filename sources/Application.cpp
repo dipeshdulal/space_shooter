@@ -32,6 +32,7 @@ using namespace std;
 #include "Enemys.h"
 #include "Collision.h"
 #include "Sound.h"
+#include "TextLoader.h"
 
 // constructor
 Application::Application(){
@@ -45,6 +46,8 @@ int Application::start(){
     return -1;
   }
 
+  TextLoader textLoader("resources/font.ttf", windowElements.renderer);
+  SDL_Color color = {255,255,255,255};
   Eventlistner evt;
   FrameRate frameRate;
   TextureLoader loader(windowElements.renderer);
@@ -71,6 +74,8 @@ int Application::start(){
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
+    // textLoader.loadText("Frame Rate: " + frameRate.getTicks(), color);
+    // textLoader.render(10,10,1);
 
     if(collider.isCollidedBE(playerBullets, enemys)){
       cout<<"CollisionBE"<<endl;
