@@ -74,8 +74,8 @@ int Application::start(){
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
-    // textLoader.loadText("Frame Rate: " + frameRate.getTicks(), color);
-    // textLoader.render(10,10,1);
+    textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
+    textLoader.render(10,10,1);
 
     if(collider.isCollidedBE(playerBullets, enemys)){
       cout<<"CollisionBE"<<endl;
