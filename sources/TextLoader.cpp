@@ -12,7 +12,9 @@ TextLoader::TextLoader(string ttf, SDL_Renderer* renderer){
 }
 
 void TextLoader::loadText(string text, SDL_Color color){
+
 	_surface = TTF_RenderText_Solid(_font, text.c_str(), color);
+
 	if(_surface == NULL){
 		cout << "Unable to render text surface! Error: " << TTF_GetError() << endl; 
 	}else{
@@ -25,6 +27,7 @@ void TextLoader::loadText(string text, SDL_Color color){
  		}
 
  		SDL_FreeSurface(_surface);
+ 		_surface = NULL;
 	}
 
 }

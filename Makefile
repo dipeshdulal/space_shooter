@@ -21,7 +21,8 @@ _OBJ = main.o \
 			 Enemys.o \
 			 Collision.o \
 			 Sound.o \
-			 TextLoader.o
+			 TextLoader.o \
+			 Animation.o
 
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 

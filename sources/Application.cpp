@@ -33,6 +33,7 @@ using namespace std;
 #include "Collision.h"
 #include "Sound.h"
 #include "TextLoader.h"
+#include "Animation.h"
 
 // constructor
 Application::Application(){
@@ -46,18 +47,20 @@ int Application::start(){
     return -1;
   }
 
-  TextLoader textLoader("resources/font.ttf", windowElements.renderer);
+  // TextLoader textLoader("resources/font.ttf", windowElements.renderer);
   SDL_Color color = {255,255,255,255};
   Eventlistner evt;
   FrameRate frameRate;
   TextureLoader loader(windowElements.renderer);
   Player player(evt, windowElements.renderer);
   // future<void> fut = async(renderPlayerBullets);
+  Animation animator(windowElements.renderer);
   loader.load("resources/darkPurple.png");
   Enemy enemy(0, 0, windowElements.renderer);
   Collision collider;
   string shooting = "resources/shooting_sound.wav";
   string explosion = "resources/explosion.wav";
+
   // enemys.addEnemy(enemy);
   // SDL_Rect src = {211,941,99,75};
   // SDL_Rect dst = {100,100,99/2,75/2};
@@ -74,8 +77,9 @@ int Application::start(){
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
-    textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
-    textLoader.render(10,10,1);
+    // textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
+    // textLoader.render(10,10,1);
+    animator.Animate(10,10,windowElements.renderer,frameRate);
 
     if(collider.isCollidedBE(playerBullets, enemys)){
       cout<<"CollisionBE"<<endl;
