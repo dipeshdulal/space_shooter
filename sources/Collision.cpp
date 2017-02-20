@@ -55,6 +55,11 @@ bool Collision::isCollidedBE(Bullets bullets,Enemys enemys){
 	// enemys.getPosXY(PosX_enemy,PosY_enemy); 
 }
 
+void Collision::getEnemyCollisionPosition(int& x, int& y){
+	x = PosX_enemy;
+	y = PosY_enemy;
+}
+
 int Collision::getBulletCollisionIndex(){
 	return bulletCollisionIndex;
 }
@@ -93,6 +98,7 @@ bool Collision::isCollidedPE(Player player, Enemys enemys){
 	player.getPosXY(PosX_player, PosY_player);
 
 	for(int i = 0; i < index; i++){
+
 		enemysArray[i].getPosXY(PosX_enemy, PosY_enemy);
 
 		if(!(PECollisionDetected() && pecollision) ){
@@ -131,8 +137,8 @@ bool Collision::isCollidedPE(Player player, Enemys enemys){
 bool Collision::PECollisionDetected(){
 	if(PosY_enemy == PosY_player){
 		// cout<<"Y Collision"<<endl;
-		bool a = PosX_enemy + 93/2 >= (PosX_player + 10) && PosX_enemy <= (PosX_player + 10);
-		bool b = PosX_enemy + 93/2 >= (PosX_player - 10) && PosX_enemy <= (PosX_player - 10);
+		bool a = PosX_enemy + 93/2 >= (PosX_player + 20) && PosX_enemy <= (PosX_player + 20);
+		bool b = PosX_enemy + 93/2 >= (PosX_player - 20) && PosX_enemy <= (PosX_player - 20);
 		return a || b;
 	}else{
 		return false;

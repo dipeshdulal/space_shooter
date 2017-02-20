@@ -21,19 +21,19 @@ class Animation{
 private:
 	int _posX;	int _posY;
 	int frame;
+	SDL_Rect source;
 	SDL_Texture* mTexture;
 	TextureLoader *_textureLoader = NULL;
+	int startTicks;
 	void init();
 public:
 void render(int , int ,SDL_Rect*,SDL_Renderer*);
 void free();
 bool loadMedia();
-void Animate(int , int ,SDL_Renderer*, FrameRate);
+bool Animate(int , int ,SDL_Renderer*, FrameRate, bool);
 
 Animation(){
-	_posX=0;
-	frame=0;
-	_posY=0;
+
 }
 ~Animation();
 Animation(SDL_Renderer*);

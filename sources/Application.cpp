@@ -41,13 +41,17 @@ Application::Application(){
   windowElements.renderer = NULL;
 }
 
+bool gAnimationTrigger = false;
+int posX = -100;
+int posY = -100;
+
 int Application::start(){
 
   if(!initialize()){
     return -1;
   }
 
-  // TextLoader textLoader("resources/font.ttf", windowElements.renderer);
+  TextLoader textLoader("resources/font.ttf", windowElements.renderer);
   SDL_Color color = {255,255,255,255};
   Eventlistner evt;
   FrameRate frameRate;
@@ -77,9 +81,12 @@ int Application::start(){
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
-    // textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
-    // textLoader.render(10,10,1);
-    animator.Animate(10,10,windowElements.renderer,frameRate);
+    textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
+    textLoader.render(10,10,1);
+    // animator.Animate(10,10,windowElements.renderer,frameRate);
+
+    animator.Animate(posX, posY, windowElements.renderer, frameRate, gAnimationTrigger);
+    gAnimationTrigger = false;
 
     if(collider.isCollidedBE(playerBullets, enemys)){
       cout<<"CollisionBE"<<endl;
@@ -87,19 +94,20 @@ int Application::start(){
       int bulletIndex = collider.getBulletCollisionIndex();
 
        // get postion
-
+      gAnimationTrigger = true;
+      collider.getEnemyCollisionPosition(posX, posY);
       playerBullets.remove(bulletIndex);
       enemys.remove(enemyIndex);
       gExplosionSound.play();
       // bulletIndex.remove(enemyIndex);
-
-
         // positionma eplode garaune
     }
     if(collider.isCollidedPE(player,enemys)){
       cout<<"CollisionPE"<<endl;
       int enemyIndex = collider.getEnemyCollisionIndex();
       enemys.remove(enemyIndex);
+      collider.getEnemyCollisionPosition(posX, posY);
+      gAnimationTrigger = true;
       gExplosionSound.play();      
       //int 
       // enemy index

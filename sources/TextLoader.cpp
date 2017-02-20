@@ -12,7 +12,6 @@ TextLoader::TextLoader(string ttf, SDL_Renderer* renderer){
 }
 
 void TextLoader::loadText(string text, SDL_Color color){
-
 	_surface = TTF_RenderText_Solid(_font, text.c_str(), color);
 
 	if(_surface == NULL){
@@ -25,9 +24,8 @@ void TextLoader::loadText(string text, SDL_Color color){
  			_width = _surface->w;
  			_height = _surface->h;
  		}
-
  		SDL_FreeSurface(_surface);
- 		_surface = NULL;
+ 		_surface = nullptr;
 	}
 
 }
@@ -37,4 +35,5 @@ void TextLoader::render(int x, int y, int scale){
 	SDL_Rect destination = { x, y, _width * scale, _height * scale };
 	SDL_Rect source = {0, 0, _width, _height};
 	SDL_RenderCopy(_renderer, _texture, &source, &destination);
+	SDL_DestroyTexture(_texture);
 }

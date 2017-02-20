@@ -30,6 +30,7 @@
 		bool PECollisionDetected();
 		int getBulletCollisionIndex();
 		int getEnemyCollisionIndex();
+		void getEnemyCollisionPosition(int&, int&);
 	};
 
 
