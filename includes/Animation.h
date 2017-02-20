@@ -14,6 +14,8 @@
 #include "TextureLoader.h"
 #include "Collision.h"
 #include "FrameRate.h"
+#include "TextLoader.h"
+
 
 using namespace std;
 
@@ -31,6 +33,7 @@ void render(int , int ,SDL_Rect*,SDL_Renderer*);
 void free();
 bool loadMedia();
 bool Animate(int , int ,SDL_Renderer*, FrameRate, bool);
+bool Gameover(SDL_Renderer*, TextLoader);
 
 Animation(){
 

@@ -7,7 +7,9 @@
  *****************************************************/
 #include "Enemys.h"
 #include "Enemy.h"
-
+int Enemys::getscore(){
+	return score;
+}
 Enemy* Enemys::getEnemys(){
 	return enemy;
 }
@@ -21,6 +23,8 @@ void Enemys::remove(int pos){
 	// for(int i= pos; i < index - 1; i++){
 	// 	enemy[i] = enemy[i+1];
 	// }
+	score ++;
+	// cout<<score<<endl;
 	removeEnemy(pos);
 }
 

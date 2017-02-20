@@ -44,6 +44,7 @@ Application::Application(){
 bool gAnimationTrigger = false;
 int posX = -100;
 int posY = -100;
+bool gameover = false;
 
 int Application::start(){
 
@@ -74,49 +75,53 @@ int Application::start(){
   // the main game loop where all the rendering stuff takes place
   while(evt.initialize()){
     // this is the main game loop
-    frameRate.start();
-    loader.renderTexture(NULL, NULL);
-    player.render();
-    playerBullets.renderBullets();
+    if(!gameover){
+      frameRate.start();
+      loader.renderTexture(NULL, NULL);
+      player.render();
+      playerBullets.renderBullets();
     // enemys.render();
     // renderPlayerBullets();
     // fut.get();
-    textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
-    textLoader.render(10,10,1);
+      textLoader.loadText("Time: " + to_string((frameRate.getTicks()/100)%60), color);
+      textLoader.render(10,10,1);
+      textLoader.loadText("Score: " + to_string(enemys.getscore()), color);
+      textLoader.render(640-110,10,1);
+
     // animator.Animate(10,10,windowElements.renderer,frameRate);
 
-    animator.Animate(posX, posY, windowElements.renderer, frameRate, gAnimationTrigger);
-    gAnimationTrigger = false;
+      animator.Animate(posX, posY, windowElements.renderer, frameRate, gAnimationTrigger);
+      gAnimationTrigger = false;
 
-    if(collider.isCollidedBE(playerBullets, enemys)){
-      cout<<"CollisionBE"<<endl;
-      int enemyIndex = collider.getEnemyCollisionIndex();
-      int bulletIndex = collider.getBulletCollisionIndex();
+      if(collider.isCollidedBE(playerBullets, enemys)){
+        cout<<"CollisionBE"<<endl;
+        int enemyIndex = collider.getEnemyCollisionIndex();
+        int bulletIndex = collider.getBulletCollisionIndex();
 
        // get postion
-      gAnimationTrigger = true;
-      collider.getEnemyCollisionPosition(posX, posY);
-      playerBullets.remove(bulletIndex);
-      enemys.remove(enemyIndex);
-      gExplosionSound.play();
+        gAnimationTrigger = true;
+        collider.getEnemyCollisionPosition(posX, posY);
+        playerBullets.remove(bulletIndex);
+        enemys.remove(enemyIndex);
+        gExplosionSound.play();
       // bulletIndex.remove(enemyIndex);
         // positionma eplode garaune
-    }
-    if(collider.isCollidedPE(player,enemys)){
-      cout<<"CollisionPE"<<endl;
-      int enemyIndex = collider.getEnemyCollisionIndex();
-      enemys.remove(enemyIndex);
-      collider.getEnemyCollisionPosition(posX, posY);
-      gAnimationTrigger = true;
-      gExplosionSound.play();      
+      }
+      if(collider.isCollidedPE(player,enemys)){
+        cout<<"CollisionPE"<<endl;
+        int enemyIndex = collider.getEnemyCollisionIndex();
+        enemys.remove(enemyIndex);
+        collider.getEnemyCollisionPosition(posX, posY);
+        gAnimationTrigger = true;
+        gExplosionSound.play();      
+        gameover = animator.Gameover(windowElements.renderer, textLoader);
       //int 
       // enemy index
-      
+      }  
+      enemys.push(frameRate.getTicks(), enemy);
+      enemys.renderEnemy();
     }
-
-
-    enemys.push(frameRate.getTicks(), enemy);
-    enemys.renderEnemy();
+    
     loader.presentRenderer();
     evt.call(frameRate);
   }

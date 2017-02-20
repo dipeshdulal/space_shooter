@@ -3,10 +3,21 @@
 #include "TextureLoader.h"
 #include "Collision.h"
 #include "FrameRate.h"
+#include "TextLoader.h"
 
 using namespace std;
 
+bool Animation::Gameover(SDL_Renderer* gRenderer, TextLoader textLoader){
+	_textureLoader->load("resources/gameover.png");
+	// SDL_Rect srcgameover= {0,0,640,480};
+	// SDL_Rect dstgameover= {0,0,640,480};
+	_textureLoader->renderTexture( NULL , NULL );
+	SDL_Color color = {255,255,255,255};
+	// textLoader.loadText("Score: Here", color);
+	// textLoader.render(20,480/2,5);
 
+	return true;
+}
 
 Animation::Animation(SDL_Renderer* gRenderer){
 	_posX=0;
@@ -28,7 +39,7 @@ bool Animation::Animate(int x ,int y,SDL_Renderer* gRenderer, FrameRate frameRat
 	// Animation gSpriteSheetTexture(gRenderer);
 	// SDL_Rect gSpriteClips[4];
 
-	cout << trigger << endl;
+	//cout << trigger << endl;
 
 	if(trigger){
 		startTicks = frameRate.getTicks();
@@ -40,7 +51,7 @@ bool Animation::Animate(int x ,int y,SDL_Renderer* gRenderer, FrameRate frameRat
 		int ticks = ( (frameRate.getTicks() - startTicks) % 1600);
 		 //cout <<frameRate.getTicks()%1600<< endl;
 
-		cout << ticks << endl;
+		//cout << ticks << endl;
 		
 		if( ticks >= 97 && ticks <100 ){
 

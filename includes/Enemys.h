@@ -18,6 +18,7 @@
 		private: 
 			Enemy *enemy = new Enemy[30];
 			int index;
+			int score;
 			// float speed;
 			void removeEnemy(int);
 			int _posX,_posY;
@@ -28,8 +29,10 @@
 			void push(int, Enemy);
 			Enemys() {
 				index = 0;
+				score =0 ;
 				// speed
 			}
+			int getscore();
 			Enemy* getEnemys();
 			int getIndex();
 			void remove(int);
